@@ -1,0 +1,79 @@
+## Goals:
+
+
+#########################
+QC Open Questions:
+
+Number of files to check?
+Trailing seconds and time of recording?
+
+f0 = 5  # trailing seconds in first file
+df = 10 # interval between file time stamps
+
+#########################
+## Plug in equipment
+
+## Plug in fiber patch cable
+
+## Boot order
+
+## Run OTDR
+# Determine cable length
+# Set initial sampling rate
+
+## Check and screenshot initial OTDR info in Data Viewer; save and share for later
+
+
+## Run Phase Test; configured for cable length
+#  Set parameters
+
+
+## Plug external USB drive into OptoDAS and mount
+#  sudo mount <source> <target-directory>
+
+
+## At the bottom of the DAS Control application,
+## Choose some range of data to copy to /mnt/usb
+
+#########################
+Run QC on personal laptop
+#########################
+# plug in drive 
+
+'diskutil list' will list all disks with their identifiers, even if unmounted.
+For mounted disks, to find the raw device name you can run 'df'
+You can limit the results to locally-mounted filesystems, use df -Hl.
+This results in a list of partitions and their raw device names.
+
+You can list all USB devices with system_profiler SPUSBDataType
+
+# Mount Device
+(base) kschoedl@Katelyns-MacBook-Pro ~ % sudo mkdir /Volumes/MorroBay
+(base) kschoedl@Katelyns-MacBook-Pro ~ % sudo mount -t exfat /dev/disk4s2 /Volumes/MorroBay
+Executing: /usr/bin/kmutil load -p /System/Library/Extensions/exfat.kext
+mount_exfat: /dev/disk4s2 on /Volumes/MorroBay: Resource busy
+mount: /Volumes/MorroBay failed with 71
+
+(base) kschoedl@Katelyns-MacBook-Pro ~ % df -Hl
+Filesystem        Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk4s2     5001G   1597M   4999G     1%       1     0  100%   /Volumes/MorroBay
+
+(base) kschoedl@Katelyns-MacBook-Pro ~ % diskutil list
+/dev/disk4 (external, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                        *5.0 TB     disk4
+   1:                        EFI EFI                     209.7 MB   disk4s1
+   2:       Microsoft Basic Data MorroBay                5.0 TB     disk4s2
+
+(base) kschoedl@Katelyns-MacBook-Pro ~ % cd /Volumes 
+(base) kschoedl@Katelyns-MacBook-Pro /Volumes % ls
+Macintosh HD	MorroBay
+
+“Terminal” would like to access files on a removable volume.
+(base) kschoedl@Katelyns-MacBook-Pro /Volumes % cd MorroBay
+(base) kschoedl@Katelyns-MacBook-Pro MorroBay % ls
+ls: fts_read: Input/output error
+
+# Confirm in Disk Utility
+MorroBay
+USB External Physical Volume • ExFAT

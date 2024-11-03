@@ -1,3 +1,9 @@
+## ## ## ##
+##
+## Modified for Morro Bay data
+##
+## ## ## ##
+
 import os
 os.environ["HDF5_USE_FILE_LOCKING"] = "FALSE"
 
@@ -17,7 +23,7 @@ from tqdm import tqdm  # progress bar
 import matplotlib  # for plotting
 # matplotlib.use('Agg')  # faster backend
 import matplotlib.pyplot as plt
-
+3
 matplotlib.rcParams['font.family'] = 'sans-serif'
 matplotlib.rcParams['font.sans-serif'] = ['DejaVu Sans']  
 matplotlib.rcParams['font.size'] = 20
@@ -205,8 +211,8 @@ if __name__ == '__main__':
 
     for starting_id in np.arange(0, 3600, 360):
         since = time.time()
-        ppsd_on_fly(data_dir = '/1-fnp/petasaur/p-wd02/muxDAS/20240510/dphi/', 
-                    out_dir = '/home/qibins/DAS_spectra/results/',
+        ppsd_on_fly(data_dir = r'/Volumes/MorroBay/exps/Morro_BenchTest/Morro_Phase (Template 10km)/20241031/dphi/', 
+                    out_dir = '/Users/kschoedl/Documents/GitHub/results/',
                     machine_name = 'optodas', 
                     num_proc = 10, 
                     start_ch = 0, 
